@@ -229,7 +229,7 @@
 |통화 전체 조회|GET|/api/users| x  | 다건 응답 정보 |200 : 정상 조회|
 
 <details>
-  <summary><b>통화 생성성</b></summary>
+  <summary><b>통화 생성</b></summary>
 
 ### 1. 통화 생성
 
