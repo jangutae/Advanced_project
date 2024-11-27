@@ -611,11 +611,119 @@
 ## SQL query
 
 ### 1. 테이블 생성
+```sql
+--- Create users table
+CREATE TABLE users
+(
+    id         BIGINT          NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '유저 식별 고유 번호',
+    name       VARCHAR(30)  NOT NULL COMMENT '유저 이름',
+    email      VARCHAR(255) NOT NULL COMMENT '유저 이메일',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '생성일시',
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일시',
+    PRIMARY KEY (id)
+);
+
+--- Create currnecies table
+CREATE TABLE currencies
+(
+    id            BIGINT      NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '통화 식별 고유 번호',
+    exchange_rate double NOT NULL COMMENT '환율',
+    currency_name VARCHAR(30) NOT NULL COMMENT '통화 이름',
+    created_at    DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '생성일시',
+    updated_at    DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일시',
+    PRIMARY KEY (id)
+);
+
+--- Create exchanges table
+CREATE TABLE exchanges
+(
+    id          BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '유저_통화 식별 고유 번호',
+    user_id     BIGINT NOT NULL COMMENT '유저 고유 번호',
+    currency_id BIGINT NOT NULL COMMENT '통화 고유 번호',
+    amount_in_krw DOUBLE COMMENT '환전 전 금액 (원화 기준)',
+    amount_after_exchange DOUBLE COMMENT '환전 후 금액',
+    status      ENUM ('normal', 'cancelled') DEFAULT 'normal' COMMENT '환전 상태',
+    FOREIGN KEY (user_id) REFERENCES users (id),
+    FOREIGN KEY (currency_id) REFERENCES currencies (id)
+);
+```
 ### 2. 유저 생성 및 통화 생성
+
+```sql
+
+-- Insert users
+INSERT INTO users (id, name, email, created_at)
+VALUES (1, 이름, test@example.com, current_timestamp());
+
+-- Insert currencies
+INSERT INTO user (id, currency_name, exchange_rate, symbol, create_date)
+VALUES (1, 통화', '환율','화폐단위', current_timestamp());
+
+```
+
 ### 3. 유저 조회 및 통화 조회 
-### 4. 유저 
-### 5. 테이블 생성
-### 6. 테이블 생성
+
+```sqp
+
+--- Select users with id 1
+SELECT id, name, email, created_at, updated_at FROM users WHERE id = 1;
+
+--- Select currencys id 1
+SELECT id, currnecy_name, exchange_rate, created_at, updated_at FROM users WHERE id = 1;
+
+```
+
+### 4. 유저 및 통화 전체 조회
+
+```sqp
+
+--- Select users
+SELECT id, name, email, created_at, updated_at FROM users
+
+--- Select currencys
+SELECT id, currnecy_name, exchange_rate, created_at, updated_at FROM users
+
+```
+### 5. 유저 삭제
+
+```sql
+--- Delete users with id 1
+DELETE FROM users WHERE id = 1;
+
+```
+
+### 5. 환전 요청
+
+```sql
+
+
+
+```
+### 6. 환전 요청 조회
+
+```sql
+--- Select exchanges with id 1
+
+
+
+```
+
+### 7. 환전 요청 상태 변경
+
+```sql
+
+
+```
+
+### 8. 환전 요청 삭제
+
+```sql
+--- Delete exchanges with user_id 1
+ 
+DROP TABLE users WHERE user_id = 1;
+
+```
+
 
 
 
