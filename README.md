@@ -663,7 +663,7 @@ VALUES (1, 통화', '환율','화폐단위', current_timestamp());
 
 ### 3. 유저 조회 및 통화 조회 
 
-```sqp
+```sql
 
 --- Select users with id 1
 SELECT id, name, email, created_at, updated_at FROM users WHERE id = 1;
@@ -675,7 +675,7 @@ SELECT id, currnecy_name, exchange_rate, created_at, updated_at FROM users WHERE
 
 ### 4. 유저 및 통화 전체 조회
 
-```sqp
+```sql
 
 --- Select users
 SELECT id, name, email, created_at, updated_at FROM users
