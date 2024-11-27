@@ -384,6 +384,14 @@
 
 ## Exchange
 
+
+|기능|Method|URL|Request|Response|상태코드|
+|---|---|---|---|---|---|
+|환전 요청 수행|POST|/api/users/{userId}/currencies/{currencyId}/exchanges| 요청 body | 등록 정보 | 201 : 정상 등록,  400 : 잘못된 요청 구문|
+|환전 요청 조회|GET|/api/users/{userId}/currencies/{currencyId}/exchanges/{exchangeId}| x | 단건 응답 정보 |200 : 정상 조회,  404 : 통화를 조회할 수 없음|
+|환전 요청 상태 변경|GET|/api/users/{userId}/currencies/{currencyId}/exchanges/{exchangeId}| 요청 params  | 상태 변경 정보 |200 : 정상 조회|
+|환전 요청 삭제|GET|/api/users/{userId}| x  | 등록 삭제 |200 : 정상 조회|
+
 <details>
   <summary><b>환전 요청 수행</b></summary>
 
