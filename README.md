@@ -380,7 +380,13 @@
         "id" : 2,
         "currencyName" : "화폐명2",
         "exchangeRate" : "환율2",
-        "symbol" : "화폐태 조회|POST/api/users/{userId}/currencies/{currencyId}/exchanges/{exchangeId}|/api/users| x  | 다건 응답 정보 |200 : 정상 조회|
+        "symbol" : "화폐단위"
+        "createdAt" : "2024-11-27 14:17:00"
+      }
+    ]
+
+</details>
+
 
 ## Exchange
 
