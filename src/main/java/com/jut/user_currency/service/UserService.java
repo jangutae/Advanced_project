@@ -20,8 +20,7 @@ public class UserService {
 
         userRepository.save(createdUser);
 
-        return new UserResponseDto(createdUser.getId(), createdUser.getName(), createdUser.getEmail());
-
+        return new UserResponseDto(createdUser.getUserId(), createdUser.getName(), createdUser.getEmail());
     }
 
     public List<UserResponseDto> findAllUsers() {
@@ -31,9 +30,9 @@ public class UserService {
     }
 
     public UserResponseDto findUserById(Long id) {
-       User findUser = userRepository.findByIdOrThrowElse(id);
+       User findUser = userRepository.findByIdOrElseThrow(id);
 
-       return new UserResponseDto(findUser.getId(), findUser.getName(), findUser.getEmail());
+       return new UserResponseDto(findUser.getUserId(), findUser.getName(), findUser.getEmail());
     }
 
     public void deleteUser(Long id) {

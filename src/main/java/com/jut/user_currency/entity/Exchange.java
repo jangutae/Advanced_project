@@ -1,9 +1,17 @@
 package com.jut.user_currency.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
 
 @Entity
 @Table( name = "exchange")
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Exchange extends BaseEntity {
 
     @Id
@@ -19,16 +27,14 @@ public class Exchange extends BaseEntity {
     Currency currency;
 
     @Column(name = "amount_in_krw", nullable = false)
-    Double beforeExchange;
+    BigDecimal beforeExchange;
 
     @Column(name = "amount_after_exchange", nullable = false)
-    Double afterExchange;
+    BigDecimal afterExchange;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", columnDefinition = "VARCHAR(255) DEFAULT 'normal'")
     Status status;
-
-    public Exchange() {}
 
     public enum Status {
         NORMAL, CANCELLED

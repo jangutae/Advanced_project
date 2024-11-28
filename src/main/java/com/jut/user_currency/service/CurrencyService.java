@@ -20,7 +20,7 @@ public class CurrencyService {
 
         currencyRepository.save(currency);
 
-        return new CurrencyResponseDto(currency.getId(), currency.getCurrencyName(), currency.getExchangeRate(), currency.getSymbol());
+        return new CurrencyResponseDto(currency.getCurrencyId(), currency.getCurrencyName(), currency.getExchangeRate(), currency.getSymbol());
     }
 
     public List<CurrencyResponseDto> findAllCurrencies() {
@@ -30,6 +30,6 @@ public class CurrencyService {
     public CurrencyResponseDto getCurrencyById(Long id) {
        Currency getCurrency = currencyRepository.findByIdOrElseThrow(id);
 
-        return new CurrencyResponseDto(getCurrency.getId(), getCurrency.getCurrencyName(), getCurrency.getExchangeRate(), getCurrency.getSymbol());
+        return new CurrencyResponseDto(getCurrency.getCurrencyId(), getCurrency.getCurrencyName(), getCurrency.getExchangeRate(), getCurrency.getSymbol());
     }
 }

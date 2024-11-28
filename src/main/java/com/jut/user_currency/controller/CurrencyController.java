@@ -20,7 +20,7 @@ public class CurrencyController {
 
     @PostMapping
     public ResponseEntity<CurrencyResponseDto> createCurrency(@RequestBody CurrencyRequestDto requestDto) {
-      CurrencyResponseDto currencyResponseDto = currencyService.createdCurrency(requestDto.getCurrencyName(), requestDto.getExchangeRate(), requestDto.getSymbol());
+        CurrencyResponseDto currencyResponseDto = currencyService.createdCurrency(requestDto.currencyName(), requestDto.exchangeRate(), requestDto.symbol());
 
       return ResponseEntity.status(HttpStatus.CREATED).body(currencyResponseDto);
     }
