@@ -1,15 +1,8 @@
 package com.jut.user_currency.dto;
 
-import lombok.Getter;
 
-import java.math.BigDecimal;
+import com.jut.user_currency.entity.Exchange;
 
-@Getter
-public class ExchangeRequestDto {
+public record ExchangeRequestDto(Long userId, Long currencyId, Double beforeExchangeAmount, Exchange.Status status) {
 
-   private final Double beforeExchange;
-
-    public ExchangeRequestDto(Double beforeExchange) {
-        this.beforeExchange = beforeExchange;
-    }
 }

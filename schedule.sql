@@ -2,7 +2,7 @@ use advanced;
 
 CREATE TABLE users
 (
-    id         BIGINT          NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '유저 식별 고유 번호',
+    id         BIGINT       NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '유저 식별 고유 번호',
     name       VARCHAR(30)  NOT NULL COMMENT '유저 이름',
     email      VARCHAR(255) NOT NULL COMMENT '유저 이메일',
     status     ENUM ('normal', 'cancelled'),

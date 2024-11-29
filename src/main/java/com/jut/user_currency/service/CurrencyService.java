@@ -4,7 +4,9 @@ import com.jut.user_currency.dto.CurrencyResponseDto;
 import com.jut.user_currency.entity.Currency;
 import com.jut.user_currency.repository.CurrencyRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -18,6 +20,10 @@ public class CurrencyService {
     public CurrencyResponseDto createdCurrency(String currencyName, BigDecimal exchangeRate, String symbol) {
         Currency currency = new Currency(currencyName, exchangeRate, symbol);
 
+        if (currency.getCurrencyName().isEmpty() || currency.getExchangeRate() == null || currency.getSymbol().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "통화와 환율과 화폐단위는 필수값 입니다.");
+        }
+
         currencyRepository.save(currency);
 
         return new CurrencyResponseDto(currency.getCurrencyId(), currency.getCurrencyName(), currency.getExchangeRate(), currency.getSymbol());
@@ -29,6 +35,10 @@ public class CurrencyService {
 
     public CurrencyResponseDto getCurrencyById(Long id) {
        Currency getCurrency = currencyRepository.findByIdOrElseThrow(id);
+
+       if (getCurrency.getCurrencyName() == null || getCurrency.getExchangeRate() == null) {
+           throw new ResponseStatusException(HttpStatus.NOT_FOUND, "통화 이름 및 환율 정보를 찾을 수 없습니다.");
+       }
 
         return new CurrencyResponseDto(getCurrency.getCurrencyId(), getCurrency.getCurrencyName(), getCurrency.getExchangeRate(), getCurrency.getSymbol());
     }

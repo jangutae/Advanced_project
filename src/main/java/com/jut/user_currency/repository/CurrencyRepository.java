@@ -7,6 +7,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 public interface CurrencyRepository extends JpaRepository<Currency, Long> {
      default Currency findByIdOrElseThrow(Long id) {
-         return findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "잘못된 통화 정보입니다." + id));
+         return findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "찾을수 없는 통화 정보입니다." + id));
      }
 }

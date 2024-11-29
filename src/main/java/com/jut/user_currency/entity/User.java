@@ -19,13 +19,14 @@ public class User extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
-    @Column(name = "username", nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "email", nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "user")
+    // 우저 삭제시 유저가 요청한 모든 환전 요청 삭제
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private final List<Exchange> exchanges = new ArrayList<>();
 
     public User(String name, String email) {

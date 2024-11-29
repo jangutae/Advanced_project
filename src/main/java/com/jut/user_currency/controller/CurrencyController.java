@@ -38,8 +38,4 @@ public class CurrencyController {
 
        return ResponseEntity.ok().body(currencyResponseDto);
     }
-
-
-
-
 }

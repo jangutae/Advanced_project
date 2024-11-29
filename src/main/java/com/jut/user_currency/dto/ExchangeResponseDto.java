@@ -1,22 +1,19 @@
 package com.jut.user_currency.dto;
 
+
 import com.jut.user_currency.entity.Exchange;
 
 import java.math.BigDecimal;
 
-public class ExchangeResponseDto {
+public record ExchangeResponseDto(Long exchangeId, Long userId, Long currencyId, Double beforeExchangeAmount, BigDecimal afterExchangeAmount, Exchange.Status status) {
 
-    private final Long id;
-    private final Long userId;
-    private final Long currencyId;
-    private final BigDecimal afterExchange;
-    private final Exchange.Status status;
+    public static ExchangeResponseDto toDto(Exchange exchange) {
+        return new ExchangeResponseDto(exchange.getExchangeId(),
+                                       exchange.getUser().getUserId(),
+                                       exchange.getCurrency().getCurrencyId(),
+                                       exchange.getBeforeExchangeAmount(),
+                                       exchange.getAfterExchangeAmount(),
+                                       exchange.getStatus());
 
-    public ExchangeResponseDto(Long id, Long userId, Long currencyId, BigDecimal afterExchange, Exchange.Status status) {
-        this.id = id;
-        this.userId = userId;
-        this.currencyId = currencyId;
-        this.afterExchange = afterExchange;
-        this.status = status;
     }
 }
