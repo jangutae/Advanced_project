@@ -695,23 +695,25 @@ DELETE FROM users WHERE id = 1;
 ### 5. 환전 요청
 
 ```sql
-
-
+--- Insert exchanges
+INSERT INTO (user_id, currency_id, amount_in_krw, status, created_at)
+VALUES(1, 1, 1000, NORMAL, current_timestamp());
 
 ```
 ### 6. 환전 요청 조회
 
 ```sql
 --- Select exchanges with id 1
-
-
+SELECT user_id, currency_id, amount_in_krw, amount_after_exchange, status, created_at
+FROM exchanges WHERE id = 1;
 
 ```
 
 ### 7. 환전 요청 상태 변경
 
 ```sql
-
+--- Update exchange with id 1
+UPDATE status SET = 'CONCELLED' WHERE id = 1; 
 
 ```
 
