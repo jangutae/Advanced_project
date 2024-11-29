@@ -12,8 +12,9 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(ResponseStatusException.class)
-    public ResponseEntity<Map<String, String>> handlerResponseStatusException(ResponseStatusException ex) {
+    // 데이터 베이스에 저장되어 있지 않을 경우 반환 에러 코드
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<Map<String, String>> handlerIllegalStateException(IllegalStateException ex) {
 
         Map<String, String> response = new HashMap<>();
 
@@ -24,7 +25,7 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.NOT_FOUND)
                 .body(response);
     }
-
+    // 요청 형식이 올바르지 않을 경우 반환 에러코드
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Map<String, String>> handlerIllegalArgumentException(IllegalArgumentException ex) {
 

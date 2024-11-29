@@ -25,7 +25,7 @@ public class User extends BaseEntity {
     @Column(name = "email", nullable = false)
     private String email;
 
-    // 우저 삭제시 유저가 요청한 모든 환전 요청 삭제
+    // 유저 삭제시 유저가 요청한 모든 환전 요청 삭제
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private final List<Exchange> exchanges = new ArrayList<>();
 

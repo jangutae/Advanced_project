@@ -17,7 +17,7 @@ public class CurrencyService {
 
     public CurrencyResponseDto createdCurrency(String currencyName, BigDecimal exchangeRate, String symbol) {
         Currency currency = new Currency(currencyName, exchangeRate, symbol);
-
+        // 통화 등록 시 필수값 확인
         if (currency.getCurrencyName().isEmpty() || currency.getExchangeRate() == null || currency.getSymbol().isEmpty()) {
             throw new IllegalArgumentException("요청값의 형식이 맞지 않습니다.");
         }
@@ -33,7 +33,7 @@ public class CurrencyService {
 
     public CurrencyResponseDto getCurrencyById(Long id) {
        Currency getCurrency = currencyRepository.findByIdOrElseThrow(id);
-
+        // 통화 조회 시 필수값 존재 여부 확인
        if (getCurrency.getCurrencyName() == null || getCurrency.getExchangeRate() == null) {
            throw new IllegalArgumentException("요청값의 형식이 맞지 않습니다.");
        }

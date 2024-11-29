@@ -47,7 +47,7 @@ public class ExchangeService {
         BigDecimal afterExchangeDollar = findCurrency.getExchangeRate().multiply(DoubleBigDecimal);
         // Double 입력 값 -> 달러 형태로 변환
         String StringToDollar = priceFormatter.print(afterExchangeDollar, new Locale("en", "US"));
-
+        // 환전전 금액 형식 확인
         if (!validationStringToDollar(StringToDollar)) {
             throw new IllegalArgumentException("요청값의 형식이 맞지 않습니다. ");
         }
@@ -97,7 +97,7 @@ public class ExchangeService {
             }
         });
     }
-
+    // 환전 전 금액 형식 검사 로직
     public static boolean validationStringToDollar(String checkAfterExchange) {
         // 금액 형삭에 대한 정규식
         String checkString = "^\\d+(\\.\\d+)?$";

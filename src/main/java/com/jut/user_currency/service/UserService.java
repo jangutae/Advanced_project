@@ -3,6 +3,7 @@ package com.jut.user_currency.service;
 import com.jut.user_currency.dto.UserResponseDto;
 import com.jut.user_currency.entity.User;
 import com.jut.user_currency.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +17,15 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    @Transactional
     public UserResponseDto createdUser(String name, String email) {
         User createdUser = new User(name, email);
 
+        // 유저 등록 시 필수 값 확인
         if (createdUser.getName().isBlank() || createdUser.getEmail().isBlank()) {
             throw new IllegalArgumentException("요청값의 형식이 맞지 않습니다.");
         }
-
+        // 이메일 형식 검사 로직
         if (!validateEmail(createdUser.getEmail())) {
             throw new IllegalArgumentException("요청값이 형식에 맞지 않습니다.");
         }

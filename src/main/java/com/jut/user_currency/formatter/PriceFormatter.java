@@ -16,8 +16,8 @@ public class PriceFormatter implements Formatter<Number> {
     public Number parse(String text, Locale locale) throws ParseException {
         log.info("text = {}, locale = {}", text, locale);
 
-    // 변환 로직
-    // NumberFormat이 제공하는 기능
+        // 변환 로직
+        // NumberFormat이 제공하는 기능
         NumberFormat format = NumberFormat.getInstance(locale);
         // "10.000" -> 10000L
         return format.parse(text);

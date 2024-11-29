@@ -15,6 +15,7 @@ public class ExchangeController {
 
     private final ExchangeService exchangeService;
 
+    // 환전 요정
     @PostMapping("/exchanges")
     public ResponseEntity<ExchangeResponseDto> requestExchange(
             @RequestBody ExchangeRequestDto requestDto
@@ -24,6 +25,7 @@ public class ExchangeController {
         return ResponseEntity.ok().body(exchangeResponseDto);
     }
 
+    // 환전 요청 조회
     @GetMapping("/exchanges/{exchangeId}")
     public ResponseEntity<ExchangeResponseDto> requestExchangeByUserId(
             @PathVariable Long exchangeId
@@ -33,19 +35,14 @@ public class ExchangeController {
         return ResponseEntity.ok().body(exchangeResponseDto);
     }
 
+    // 환전 요청 상태 변경
     @PostMapping("/exchanges/{exchangeId}")
     public ResponseEntity<String> requestedExchangeStatus(
             @PathVariable Long exchangeId
     ) {
-      String status = exchangeService.requestedExchangeChangeStatus(exchangeId);
+        String status = exchangeService.requestedExchangeChangeStatus(exchangeId);
 
         return ResponseEntity.ok().body(status + "로 상태가 변경되었습니다.");
     }
-
-//    @DeleteMapping("/users/{userId}")
-//    public ResponseEntity<String> deleteExchangeByUserId(@PathVariable Long userId) {
-//        userService.deleteUser(userId);
-//
-//       return ResponseEntity.ok().body("정상적으로 삭제되었습니다.");
-//    }
 }
+
