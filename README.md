@@ -393,10 +393,9 @@
 
 |기능|Method|URL|Request|Response|상태코드|
 |---|---|---|---|---|---|
-|환전 요청 수행|POST|/api/users/{userId}/currencies/{currencyId}/exchanges| 요청 body | 등록 정보 | 201 : 정상 등록,  400 : 잘못된 요청 구문|
-|환전 요청 조회|GET|/api/users/{userId}/currencies/{currencyId}/exchanges/{exchangeId}| x | 단건 응답 정보 |200 : 정상 조회,  404 : 통화를 조회할 수 없음|
-|환전 요청 상태 변경|GET|/api/users/{userId}/currencies/{currencyId}/exchanges/{exchangeId}| 요청 params  | 상태 변경 정보 |200 : 정상 조회|
-|환전 요청 삭제|GET|/api/users/{userId}| x  | 등록 삭제 |200 : 정상 조회|
+|환전 요청 수행|POST|/api/exchanges| 요청 body | 등록 정보 | 201 : 정상 등록,  400 : 잘못된 요청 구문|
+|환전 요청 조회|GET|/api/exchanges/{exchangeId}| x | 단건 응답 정보 |200 : 정상 조회,  404 : 통화를 조회할 수 없음|
+|환전 요청 상태 변경|GET|/api/exchanges/{exchangeId}| 요청 params  | 상태 변경 정보 |200 : 정상 조회|
 
 <details>
   <summary><b>환전 요청 수행</b></summary>
@@ -407,7 +406,7 @@
       
   |메서드|요청 URL|
   |--|--|
-  |POST|/api/users/{userId}/currencies/{currencyId}/exchanges|
+  |POST|/api/exchanges|
 
        
   * 본문 
@@ -434,7 +433,7 @@
       
   * 예시 :
 
-    * 요청 : POST/api/users/{userId}/currencies/{currencyId}/exchanges
+    * 요청 : POST/api/exchanges
    
        ```
        {
@@ -469,7 +468,7 @@
       
   |메서드|요청 URL|
   |--|--|
-  |GET|/users/{userId}/currencies/{currencyId}/exchanges/{exchangeId}|
+  |GET|/exchanges/{exchangeId}|
        
   * 본문 : 
       
@@ -490,7 +489,7 @@
       
   * 예시 :
     
-    * 요청 : GET/api/users/{userId}/currencies/{currencyId}/exchanges/{exchangeId}
+    * 요청 : GET/api/exchanges/{exchangeId}
 
       
     * 응답 : HTTP/1.1  200 OK
@@ -519,7 +518,7 @@
       
   |메서드|요청 URL|
   |--|--|
-  |POST|/api/users/{userId}/currencies/{currencyId}/exchanges/{exchangeId}|
+  |POST|/api/exchanges/{exchangeId}|
        
   * 본문 : 
       
@@ -545,7 +544,7 @@
   * 예시 :
       
       
-    * 요청 : POST/api/users/{userId}/currencies/{currencyId}/exchanges/{exchangeId}
+    * 요청 : POST/api/exchanges/{exchangeId}
    
 
 
