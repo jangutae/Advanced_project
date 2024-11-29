@@ -26,7 +26,7 @@ public class UserService {
         }
 
         if (!validateEmail(createdUser.getEmail())) {
-            throw new IllegalArgumentException("올바르지 않는 이메일 형식입니다.");
+            throw new IllegalArgumentException("요청값이 형식에 맞지 않습니다.");
         }
         userRepository.save(createdUser);
 

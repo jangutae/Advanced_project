@@ -29,6 +29,7 @@ public class Currency extends BaseEntity {
     @Column(name = "symbol", nullable = false)
     private String symbol;
 
+    // 하나의 통화 여러 환전 요청
     @OneToMany(mappedBy = "currency")
     private final List<Exchange>  exchanges = new ArrayList<>();
 

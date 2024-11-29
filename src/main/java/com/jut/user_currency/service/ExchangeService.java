@@ -23,6 +23,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 @RequiredArgsConstructor
@@ -51,9 +53,13 @@ public class ExchangeService {
         BigDecimal afterExchangeDollar = findCurrency.getExchangeRate().multiply(DoubleBigDecimal);
         // Double 입력 값 -> 달러 형태로 변환
         String StringToDollar = priceFormatter.print(afterExchangeDollar, new Locale("en", "US"));
-        // 소수점 둘쨋자리까지 표현
-        BigDecimal afterExchange = findCurrency.getExchangeRate().multiply(new BigDecimal(StringToDollar));
 
+        if (!validationStringToDollar(StringToDollar)) {
+            throw new IllegalArgumentException("요청값의 형식이 맞지 않습니다. ");
+        }
+        // 반환 값을 다시 타입 변환
+        BigDecimal afterExchange = findCurrency.getExchangeRate().multiply(new BigDecimal(StringToDollar));
+        // 소수점 둘쨋자리까지 표현
         BigDecimal exchangePrice = afterExchange.setScale(2, RoundingMode.HALF_UP);
         // 환전된 금액 업데이트
         exchange.update(exchangePrice);
@@ -96,5 +102,20 @@ public class ExchangeService {
                 log.info("Valid exchange rate for currency {}: {}", currency.getCurrencyName(), rate);
             }
         });
+    }
+
+    public static boolean validationStringToDollar(String checkAfterExchange) {
+        // 금액 형삭에 대한 정규식
+        String checkString = "^\\d+(\\.\\d+)?$";
+
+        Pattern pattern = Pattern.compile(checkString);
+        Matcher matcher = pattern.matcher(checkAfterExchange);
+
+        return matcher.matches();
+
+
+
+
+
     }
 }
