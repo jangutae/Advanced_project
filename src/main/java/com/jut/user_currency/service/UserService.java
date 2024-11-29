@@ -4,9 +4,7 @@ import com.jut.user_currency.dto.UserResponseDto;
 import com.jut.user_currency.entity.User;
 import com.jut.user_currency.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -22,7 +20,7 @@ public class UserService {
         User createdUser = new User(name, email);
 
         if (createdUser.getName().isBlank() || createdUser.getEmail().isBlank()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "이름과 이메일은 필수값 입니다.");
+            throw new IllegalArgumentException("요청값의 형식이 맞지 않습니다.");
         }
 
         if (!validateEmail(createdUser.getEmail())) {

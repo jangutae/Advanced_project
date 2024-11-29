@@ -3,7 +3,6 @@ package com.jut.user_currency.controller;
 import com.jut.user_currency.dto.ExchangeRequestDto;
 import com.jut.user_currency.dto.ExchangeResponseDto;
 import com.jut.user_currency.service.ExchangeService;
-import com.jut.user_currency.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

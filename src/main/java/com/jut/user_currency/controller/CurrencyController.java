@@ -2,7 +2,6 @@ package com.jut.user_currency.controller;
 
 import com.jut.user_currency.dto.CurrencyRequestDto;
 import com.jut.user_currency.dto.CurrencyResponseDto;
-import com.jut.user_currency.repository.CurrencyRepository;
 import com.jut.user_currency.service.CurrencyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
