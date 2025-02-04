@@ -37,4 +37,11 @@ public class CurrencyController {
 
        return ResponseEntity.ok().body(currencyResponseDto);
     }
+
+    @PatchMapping("/{currencyId}")
+    public ResponseEntity<?> updateCurrency(
+        @PathVariable Long currencyId,
+        @RequestBody CurrencyRequestDto requestDto) {
+        return ResponseEntity.ok().body("테스트");
+    }
 }
