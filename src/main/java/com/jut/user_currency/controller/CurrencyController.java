@@ -42,6 +42,9 @@ public class CurrencyController {
     public ResponseEntity<?> updateCurrency(
         @PathVariable Long currencyId,
         @RequestBody CurrencyRequestDto requestDto) {
-        return ResponseEntity.ok().body("테스트");
+
+        String text = currencyService.updateCurrency(currencyId, requestDto);
+
+        return ResponseEntity.ok().body(text);
     }
 }

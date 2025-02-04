@@ -1,5 +1,6 @@
 package com.jut.user_currency.service;
 
+import com.jut.user_currency.dto.CurrencyRequestDto;
 import com.jut.user_currency.dto.CurrencyResponseDto;
 import com.jut.user_currency.entity.Currency;
 import com.jut.user_currency.repository.CurrencyRepository;
@@ -40,4 +41,9 @@ public class CurrencyService {
 
         return new CurrencyResponseDto(getCurrency.getCurrencyId(), getCurrency.getCurrencyName(), getCurrency.getExchangeRate(), getCurrency.getSymbol());
     }
+
+	public String updateCurrency(Long currencyId, CurrencyRequestDto requestDto) {
+
+        return "수정 코드 작성";
+	}
 }
